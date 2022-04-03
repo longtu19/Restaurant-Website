@@ -27,7 +27,7 @@ function RenderDish({dish}){
     )
 }
 
-function RenderComments({comments}){
+function RenderComments({comments, addComment, dishId}){
     
     const com = comments.map(e => {
         return (
@@ -45,7 +45,7 @@ function RenderComments({comments}){
         <div className = "col-xs-12 col-sm-12 col-md-5 m-1" >
                 <h4>Comments</h4>
                 {com}  
-                <RenderSubmitComments/>
+                <RenderSubmitComments dishId = {dishId} addComment = {addComment}/>
                 
         </div>
     )
@@ -74,8 +74,7 @@ class RenderSubmitComments extends Component {
     }
 
     handleSubmit(values){
-        console.log("Current State is: " + JSON.stringify(values))
-        alert("Current State is: " + JSON.stringify(values))
+        this.props.addComment(this.props.dishId, values.rating, values.yourname, values.message)
     }
 
     render(){
@@ -185,7 +184,9 @@ const DishDetail = (props) => {
                 </div>
                 <div className = "row">
                     <RenderDish dish = {props.dish} />
-                    <RenderComments comments = {props.comments}/>
+                    <RenderComments comments = {props.comments}
+                    addComment = {props.addComment}
+                    dishId = {props.dish.id}/>
                     
                     
                 

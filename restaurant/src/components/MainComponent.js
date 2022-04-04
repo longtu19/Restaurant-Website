@@ -10,7 +10,7 @@ import Header from './HeaderComponent'
 import Footer from './FooterComponent'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addComment } from '../Redux/ActionCreator'
+import { addComment } from '../Redux/ActionCreators'
 
 const mapStateToProps = state => {
   return {

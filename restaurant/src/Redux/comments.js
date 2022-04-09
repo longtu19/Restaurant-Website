@@ -1,5 +1,4 @@
 import { act } from 'react-dom/test-utils';
-import { COMMENTS } from '../shared/comments';
 import * as ActionTypes from './ActionTypes'
 
 

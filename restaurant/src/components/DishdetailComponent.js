@@ -30,7 +30,7 @@ function RenderDish({dish}){
     )
 }
 
-function RenderComments({comments, addComment, dishId}){
+function RenderComments({comments, postComment, dishId}){
     
     const com = comments.map(e => {
         return (
@@ -48,7 +48,7 @@ function RenderComments({comments, addComment, dishId}){
         <div className = "col-xs-12 col-sm-12 col-md-5 m-1" >
                 <h4>Comments</h4>
                 {com}  
-                <RenderSubmitComments dishId = {dishId} addComment = {addComment}/>
+                <RenderSubmitComments dishId = {dishId} postComment = {postComment}/>
                 
         </div>
     )
@@ -77,7 +77,7 @@ class RenderSubmitComments extends Component {
     }
 
     handleSubmit(values){
-        this.props.addComment(this.props.dishId, values.rating, values.yourname, values.message)
+        this.props.postComment(this.props.dishId, values.rating, values.yourname, values.message)
     }
 
     render(){
@@ -207,7 +207,7 @@ const DishDetail = (props) => {
                 <div className = "row">
                     <RenderDish dish = {props.dish} />
                     <RenderComments comments = {props.comments}
-                    addComment = {props.addComment}
+                    postComment = {props.postComment}
                     dishId = {props.dish.id}/>
                     
                     

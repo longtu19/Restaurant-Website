@@ -39,36 +39,31 @@ function RenderDish({dish}){
 function RenderComments({comments, postComment, dishId}){
     
     const com = comments.map(e => {
-        return (
-          <div>
-            <ul className="list-unstyled">
+        return ( 
               <Fade in>
                 <li>{e.comment}</li>
                 <li className="m-3">
                   -- {e.author},{" "}
                   {new Intl.DateTimeFormat("en-US", {
                     year: "numeric",
-                    month: "short",
+                    month: "short",  
                     day: "2-digit",
                   }).format(new Date(Date.parse(e.date)))}
                 </li>
               </Fade>
-            </ul>
-          </div>
         );
     })
 
     return (
-        <div className = "col-xs-12 col-sm-12 col-md-5 m-1" >
-                <h4>Comments</h4>
-                 <Stagger in>
-                    {com}  
-                 </Stagger>
-                
-                <RenderSubmitComments dishId = {dishId} postComment = {postComment}/>
-                
-        </div>
-    )
+      <div className="col-xs-12 col-sm-12 col-md-5 m-1">
+        <h4>Comments</h4>
+        <ul className="list-unstyled">
+          <Stagger in>{com}</Stagger>
+        </ul>
+
+        <RenderSubmitComments dishId={dishId} postComment={postComment} />
+      </div>
+    );
         
 }
     

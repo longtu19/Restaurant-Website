@@ -39,18 +39,18 @@ function RenderDish({dish}){
 function RenderComments({comments, postComment, dishId}){
     
     const com = comments.map(e => {
-        return ( 
-              <Fade in>
-                <li>{e.comment}</li>
-                <li className="m-3">
-                  -- {e.author},{" "}
-                  {new Intl.DateTimeFormat("en-US", {
-                    year: "numeric",
-                    month: "short",  
-                    day: "2-digit",
-                  }).format(new Date(Date.parse(e.date)))}
-                </li>
-              </Fade>
+        return (
+          <Fade in>
+            <li className="m-3">
+              <p>{e.comment}</p>
+              <p>-- {e.author}</p>
+              {new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+              }).format(new Date(Date.parse(e.date)))}
+            </li>
+          </Fade>
         );
     })
 

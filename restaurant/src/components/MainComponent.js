@@ -14,6 +14,7 @@ import {
   fetchComments,
   fetchPromos,
   fetchLeaders,
+  postFeedback
 } from "../Redux/ActionCreators";
 import { actions } from "react-redux-form";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -45,6 +46,18 @@ const mapDispatchToProps = (dispatch) => ({
   fetchLeaders: () => {
     dispatch(fetchLeaders());
   },
+  postFeedback: (
+    firstname,
+    lastname,
+    telnum,
+    email,
+    agree,
+    contactType,
+    message
+  ) =>
+    dispatch(
+      postFeedback(firstname, lastname, telnum, email, agree, contactType, message)
+    )
 });
 
 class Main extends Component {
@@ -120,13 +133,22 @@ class Main extends Component {
               <Route
                 exact
                 path="/aboutus"
-                component={() => <About leaders={this.props.leaders} />}
+                component={() => (
+                  <About
+                    leaders={this.props.leaders}
+                    leadersLoading={this.props.leaders.isLoading}
+                    leadersErrMess={this.props.leaders.errMess}
+                  />
+                )}
               />
               <Route
                 exact
                 path="/contactus"
                 component={() => (
-                  <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+                  <Contact
+                    resetFeedbackForm={this.props.resetFeedbackForm}
+                    postFeedback={this.props.postFeedback}
+                  />
                 )}
               />
               <Redirect to="/home" />

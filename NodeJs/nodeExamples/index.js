@@ -8,8 +8,8 @@ function solveRect(l,b){
             console.log("ERROR: ", err.message)
         }
         else{
-            console.log("The area of the rectangle is " + rectangle.area)
-            console.log("The perimeter of the rectangle is " + rectangle.perimeter)
+            console.log("The area of the rectangle is " + rectangle.area())
+            console.log("The perimeter of the rectangle is " + rectangle.perimeter())
         }
     })
 
